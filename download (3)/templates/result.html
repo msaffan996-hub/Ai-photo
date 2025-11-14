@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h3>النتيجة</h3>
+  <img src="{{ url_for('uploaded_file', filename=filename) }}" class="responsive" />
+  <div style="margin-top:8px;">
+    <a class="button" href="{{ url_for('uploaded_file', filename=filename) }}" target="_blank">فتح الصورة</a>
+    <a class="button" href="{{ url_for('gallery') }}">العودة للسجل</a>
+  </div>
+</div>
+{% endblock %}
