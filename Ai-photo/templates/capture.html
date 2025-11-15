@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h3>التقاط الصورة</h3>
+  <video id="video" width="640" height="480" autoplay></video>
+  <div style="margin-top:10px;">
+    <button id="snapBtn" class="button">التقاط</button>
+  </div>
+  <div style="margin-top:10px;">
+    <img id="snapshot" class="responsive" alt="صورة ملتقطة" />
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/capture.js') }}"></script>
+{% endblock %}
