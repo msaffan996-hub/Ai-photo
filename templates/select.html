@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h3>اختر صورة الهدف</h3>
+
+  <form method="post" enctype="multipart/form-data">
+    <label>ارفع صورة هدف جديدة:</label>
+    <input type="file" name="target_file" accept="image/*" />
+    <button type="submit" class="button">رفع</button>
+  </form>
+
+  <h4 style="margin-top:12px;">الصور الجاهزة:</h4>
+  <div class="grid">
+    {% for t in targets %}
+      <div class="card">
+        <img src="{{ url_for('static', filename='../uploads/targets/' + t) }}" class="responsive" />
+        <div style="margin-top:8px;">
+          <!-- capture param قد تكون في query string -->
+          <a class="button" href="{{ url_for('merge') }}?target={{ t }}&capture={{ request.args.get('capture','') }}">اختر هذه</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

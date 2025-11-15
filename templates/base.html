@@ -1,0 +1,37 @@
+<!-- templates/base.html -->
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8">
+    <title>Ai Photo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div><strong>Ai Photo</strong></div>
+        <div>
+          <a href="{{ url_for('home') }}" class="button">الرئيسية</a>
+          <a href="{{ url_for('capture') }}" class="button">التقاط صورة</a>
+          <a href="{{ url_for('select') }}" class="button">اختيار هدف</a>
+          <a href="{{ url_for('gallery') }}" class="button">السجل</a>
+          <a href="{{ url_for('help_page') }}" class="button">مساعدة</a>
+          <a href="{{ url_for('about') }}" class="button">عن</a>
+        </div>
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="card">
+            {% for msg in messages %}
+              <p>{{ msg }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
